@@ -6,11 +6,9 @@ type Props = { expenses: Expense[]; onDelete: (id: string) => void };
 
 const categoryColors: Record<string, string> = {
   Food: "bg-accent/40 text-primary-deep",
-  Transport: "bg-primary/10 text-primary",
-  Shopping: "bg-primary-glow/30 text-primary-deep",
-  Bills: "bg-destructive/10 text-destructive",
-  Entertainment: "bg-secondary text-secondary-foreground",
-  Health: "bg-accent/30 text-primary-deep",
+  Travel: "bg-primary/10 text-primary",
+  Marketing: "bg-primary-glow/30 text-primary-deep",
+  Utilities: "bg-destructive/10 text-destructive",
   Other: "bg-muted text-muted-foreground",
 };
 

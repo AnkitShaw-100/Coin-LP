@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { fetchExchangeRate } from "@/lib/api";
 
 const CURRENCIES = ["USD", "EUR", "GBP", "INR", "JPY", "KWD", "AUD", "CAD"];
 
@@ -31,12 +32,8 @@ export function CurrencyConverter({ amount }: Props) {
       setLoading(true);
       setError("");
       try {
-        const res = await fetch(`https://api.frankfurter.app/latest?from=${from}&to=${to}`);
-        if (!res.ok) throw new Error("Network response was not ok");
-        const data = await res.json();
-        const r = data?.rates?.[to];
-        if (typeof r !== "number") throw new Error("Invalid rate");
-        if (!cancelled) setRate(r);
+        const data = await fetchExchangeRate(from, to);
+        if (!cancelled) setRate(data.rate);
       } catch (err) {
         if (!cancelled) {
           setError("Could not fetch live rates. Please try again.");
