@@ -47,8 +47,8 @@ export function TrackerPage() {
                 Sign in to access your tracker
               </h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground md:text-base">
-                Your expense data stays tied to your Clerk account, so you can keep sessions
-                and totals consistent across devices.
+                Your expense data stays tied to your Clerk account, so you can keep sessions and
+                totals consistent across devices.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <SignInButton mode="modal">
@@ -57,7 +57,9 @@ export function TrackerPage() {
                   </button>
                 </SignInButton>
                 <SignUpButton mode="modal">
-                  <Button className="rounded-full px-5 py-3 text-sm font-medium">Create account</Button>
+                  <Button className="rounded-full px-5 py-3 text-sm font-medium">
+                    Create account
+                  </Button>
                 </SignUpButton>
               </div>
             </div>
