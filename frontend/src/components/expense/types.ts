@@ -8,10 +8,8 @@ export type Expense = {
 
 export const CATEGORIES = [
   "Food",
-  "Transport",
-  "Shopping",
-  "Bills",
-  "Entertainment",
-  "Health",
+  "Travel",
+  "Marketing",
+  "Utilities",
   "Other",
 ] as const;

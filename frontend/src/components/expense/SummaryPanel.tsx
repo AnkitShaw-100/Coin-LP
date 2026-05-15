@@ -1,4 +1,5 @@
 import { TrendingUp, Wallet, PieChart } from "lucide-react";
+import { CATEGORIES } from "./types";
 import type { Expense } from "./types";
 
 type Props = { expenses: Expense[] };
@@ -29,6 +30,25 @@ export function SummaryPanel({ expenses }: Props) {
           label="Top category"
           value={top ? top[0] : "—"}
         />
+      </div>
+
+      <div className="mt-6 rounded-2xl bg-primary-foreground/10 p-5 backdrop-blur-sm">
+        <p className="text-xs uppercase tracking-widest text-primary-foreground/70">
+          Spending breakdown
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {CATEGORIES.map((category) => {
+            const value = byCategory[category] ?? 0;
+            return (
+              <div key={category} className="rounded-xl bg-primary-foreground/10 p-3">
+                <p className="text-sm font-medium text-white">{category}</p>
+                <p className="mt-1 text-base text-primary-foreground/80">
+                  ${value.toFixed(2)}
+                </p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

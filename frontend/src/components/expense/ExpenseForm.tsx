@@ -44,11 +44,11 @@ export function ExpenseForm({ onAdd }: Props) {
     >
       <h3 className="font-display text-2xl text-foreground">Add an expense</h3>
       <p className="mt-1 text-sm text-muted-foreground">
-        Track every coin. Stay in control of your finances.
+        Track every expense. Stay in control of your finances.
       </p>
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="title">Title</Label>
+          <Label htmlFor="title">Name</Label>
           <Input
             id="title"
             placeholder="Groceries, Uber..."

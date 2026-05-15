@@ -37,6 +37,8 @@ export function ExpenseTrackerSection({
     }
   }, [expenses]);
 
+  const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
+
   return (
     <section
       id="tracker"
@@ -49,12 +51,7 @@ export function ExpenseTrackerSection({
       <SummaryPanel expenses={expenses} />
       <div className="grid gap-6 lg:grid-cols-2">
         <ExpenseForm onAdd={(expense) => setExpenses((prev) => [expense, ...prev])} />
-        <CurrencyConverter
-          defaultAmount={Math.max(
-            expenses.reduce((sum, expense) => sum + expense.amount, 0) || 100,
-            100,
-          )}
-        />
+        <CurrencyConverter amount={Math.max(total, 0)} />
       </div>
       <ExpenseList
         expenses={expenses}

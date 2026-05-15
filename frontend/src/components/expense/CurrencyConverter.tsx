@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { ArrowRightLeft, Loader2 } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -13,10 +12,9 @@ import { Button } from "@/components/ui/button";
 
 const CURRENCIES = ["USD", "EUR", "GBP", "INR", "JPY", "KWD", "AUD", "CAD"];
 
-type Props = { defaultAmount?: number };
+type Props = { amount: number };
 
-export function CurrencyConverter({ defaultAmount = 100 }: Props) {
-  const [amount, setAmount] = useState(String(defaultAmount));
+export function CurrencyConverter({ amount }: Props) {
   const [from, setFrom] = useState("USD");
   const [to, setTo] = useState("EUR");
   const [rate, setRate] = useState<number | null>(null);
@@ -59,7 +57,7 @@ export function CurrencyConverter({ defaultAmount = 100 }: Props) {
     setTo(from);
   };
 
-  const numeric = parseFloat(amount) || 0;
+  const numeric = amount || 0;
   const converted = rate !== null ? numeric * rate : null;
 
   return (
@@ -67,7 +65,9 @@ export function CurrencyConverter({ defaultAmount = 100 }: Props) {
       <div className="flex items-center justify-between">
         <div>
           <h3 className="font-display text-2xl text-foreground">Currency converter</h3>
-          <p className="mt-1 text-sm text-muted-foreground">Live rates from Frankfurter API</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Live preview of your running total using Frankfurter API
+          </p>
         </div>
         <div className="hidden h-12 w-12 items-center justify-center rounded-2xl bg-accent/40 text-primary-deep sm:flex">
           <ArrowRightLeft className="h-5 w-5" />
@@ -75,16 +75,6 @@ export function CurrencyConverter({ defaultAmount = 100 }: Props) {
       </div>
 
       <div className="mt-6 space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="conv-amount">Amount</Label>
-          <Input
-            id="conv-amount"
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            className="h-11 rounded-xl"
-          />
-        </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
           <div className="space-y-2">
             <Label>From</Label>

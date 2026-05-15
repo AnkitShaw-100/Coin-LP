@@ -14,7 +14,7 @@ export function TrackerPage() {
               to="/"
               className="rounded-full border border-border bg-background px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
             >
-              Back to home
+              View landing page
             </Link>
             <Show when="signed-out">
               <div className="flex items-center gap-2">
@@ -34,7 +34,6 @@ export function TrackerPage() {
           </div>
         </div>
       </header>
-
       <Show
         when="signed-in"
         fallback={
@@ -47,8 +46,8 @@ export function TrackerPage() {
                 Sign in to access your tracker
               </h2>
               <p className="mt-4 text-sm leading-6 text-muted-foreground md:text-base">
-                Your expense data stays tied to your Clerk account, so you can keep sessions and
-                totals consistent across devices.
+                Your expense tracker is available after authentication, so the full tool only
+                appears on its dedicated route.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <SignInButton mode="modal">
@@ -68,7 +67,7 @@ export function TrackerPage() {
       >
         <ExpenseTrackerSection
           heading="Track Every Expense"
-          description="Use this dedicated tracker page to monitor spending and convert your totals in real time."
+          description="Monitor spending, manage categories, and convert your live total in real time."
         />
       </Show>
     </div>

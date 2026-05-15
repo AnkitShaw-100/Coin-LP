@@ -3,7 +3,6 @@ import { FeaturesSection } from "@/components/expense/FeaturesSection";
 import { EmpowerSection } from "@/components/expense/EmpowerSection";
 import { StatsBar } from "@/components/expense/StatsBar";
 import { CurrencySection } from "@/components/expense/CurrencySection";
-import { ExpenseTrackerSection } from "@/components/expense/ExpenseTrackerSection";
 import { PricingSection } from "@/components/expense/PricingSection";
 import { StepsSection } from "@/components/expense/StepsSection";
 import { NewsletterSection, SiteFooter } from "@/components/expense/NewsletterSection";
@@ -16,7 +15,6 @@ export function LandingPage() {
       <EmpowerSection />
       <StatsBar />
       <CurrencySection />
-      {/* <ExpenseTrackerSection /> */}
       <PricingSection />
       <StepsSection />
       <NewsletterSection />
