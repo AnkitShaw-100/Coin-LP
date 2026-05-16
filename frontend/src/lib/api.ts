@@ -1,6 +1,9 @@
 import type { Expense } from "@/components/expense/types";
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "http://localhost:4000").replace(/\/$/, "");
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "http://localhost:4000").replace(
+  /\/$/, 
+  "",
+);
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${API_BASE_URL}/api${path}`, {
@@ -12,15 +15,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   });
 
   const raw = await response.text();
-  let data: any = null;
-
-  if (raw) {
-    try {
-      data = JSON.parse(raw);
-    } catch {
-      data = { message: raw };
-    }
-  }
+  const data = raw ? JSON.parse(raw) : null;
 
   if (!response.ok) {
     throw new Error(data?.message ?? `Request failed with status ${response.status}`);
@@ -55,4 +50,11 @@ export async function deleteExpense(userId: string, id: string): Promise<Expense
     { method: "DELETE" },
   );
   return data.item;
+}
+
+export async function fetchExchangeRate(from: string, to: string): Promise<{ rate: number }> {
+  const data = await request<{ rate: number }>(
+    `/exchange-rate?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`,
+  );
+  return data;
 }

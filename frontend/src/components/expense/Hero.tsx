@@ -43,20 +43,18 @@ export function Hero() {
             Resources
           </a>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <Show when="signed-out">
-            <div className="flex items-center gap-3">
-              <SignInButton mode="modal">
-                <button className="hidden text-sm font-medium text-primary-foreground/85 transition-colors hover:text-white sm:inline">
-                  Log in
-                </button>
-              </SignInButton>
-              <SignUpButton mode="modal">
-                <Button className="rounded-full bg-primary-glow px-5 text-primary-deep shadow-lg shadow-black/20 hover:bg-primary-glow/90">
-                  Sign up
-                </Button>
-              </SignUpButton>
-            </div>
+            <SignInButton mode="modal">
+              <button className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white transition-colors hover:bg-white/20">
+                Sign in
+              </button>
+            </SignInButton>
+            <SignUpButton mode="modal">
+              <Button className="rounded-full bg-primary-glow px-4 py-2 text-sm text-primary-deep shadow-lg shadow-black/20 hover:bg-primary-glow/90">
+                Sign up
+              </Button>
+            </SignUpButton>
           </Show>
           <Show when="signed-in">
             <UserButton />
