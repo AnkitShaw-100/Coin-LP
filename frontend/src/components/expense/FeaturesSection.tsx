@@ -57,7 +57,7 @@ function FeatureCard({
 }) {
   return (
     <div
-      className={`group rounded-3xl border border-border p-6 transition-shadow hover:shadow-[var(--shadow-soft)] md:p-8 ${
+      className={`group rounded-3xl border border-border p-6 transition-shadow hover:shadow-(--shadow-soft) md:p-8 ${
         tone === "mint" ? "bg-accent/30" : "bg-card"
       } ${wide ? "md:col-span-2 md:grid md:grid-cols-2 md:gap-10" : ""}`}
     >
@@ -89,7 +89,7 @@ function InvoicePreview() {
       {items.map((i) => (
         <li
           key={i.label}
-          className="flex items-center gap-3 rounded-xl bg-card p-3 shadow-[var(--shadow-soft)]"
+          className="flex items-center gap-3 rounded-xl bg-card p-3 shadow-(--shadow-soft)"
         >
           <span
             className={`flex h-7 w-7 items-center justify-center rounded-full ${
@@ -139,7 +139,7 @@ function ChartPreview() {
 
 function DonutPreview() {
   return (
-    <div className="flex items-center justify-center rounded-2xl bg-card p-6 shadow-[var(--shadow-soft)]">
+    <div className="flex items-center justify-center rounded-2xl bg-card p-6 shadow-(--shadow-soft)">
       <div className="relative h-44 w-44">
         <svg viewBox="0 0 100 100" className="h-full w-full -rotate-90">
           <circle

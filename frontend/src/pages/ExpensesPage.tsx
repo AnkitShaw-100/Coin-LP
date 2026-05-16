@@ -16,7 +16,7 @@ export function ExpensesPage() {
       <TrackerAuthGate>
         <main className="-mt-14 space-y-8 md:-mt-16 md:space-y-10">
           {isLoading ? (
-            <div className="rounded-3xl border border-border bg-card p-8 text-center text-sm text-muted-foreground shadow-[var(--shadow-soft)]">
+            <div className="rounded-3xl border border-border bg-card p-8 text-center text-sm text-muted-foreground shadow-(--shadow-soft)">
               Loading your expenses…
             </div>
           ) : null}
@@ -27,11 +27,17 @@ export function ExpensesPage() {
           ) : null}
           {!isLoading ? (
             <>
-              <TrackerSectionHeader
-                title="Log a new expense"
-                description="Every entry updates your dashboard totals and category breakdown."
-              />
-              <ExpenseForm onAdd={handleAdd} />
+              <section className="overflow-hidden rounded-3xl border border-border bg-card shadow-(--shadow-soft)">
+                <div className="border-b border-border bg-linear-to-r from-primary/5 via-transparent to-primary-glow/10 p-6 md:p-7">
+                  <TrackerSectionHeader
+                    title="Log a new expense"
+                    description="Every entry updates your dashboard totals and category breakdown."
+                  />
+                </div>
+                <div className="p-4 md:p-6">
+                  <ExpenseForm onAdd={handleAdd} />
+                </div>
+              </section>
               <ExpenseList expenses={expenses} onDelete={handleDelete} />
             </>
           ) : null}

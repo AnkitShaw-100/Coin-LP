@@ -82,10 +82,13 @@ export function Hero() {
               <Link to="/tracker">Get Started</Link>
             </Button>
             <Button
+              asChild
               variant="outline"
               className="h-11 rounded-full border-white/20 bg-white/10 px-7 text-white hover:bg-white/20 hover:text-white"
             >
-              Learn More <ArrowRight className="ml-2 h-4 w-4" />
+              <a href="#features">
+                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
             </Button>
           </div>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-primary-foreground/75 lg:justify-start">
