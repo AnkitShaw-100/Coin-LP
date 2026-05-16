@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRightLeft, Loader2 } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -9,18 +10,22 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { fetchExchangeRate } from "@/lib/api";
 
 const CURRENCIES = ["USD", "EUR", "GBP", "INR", "JPY", "KWD", "AUD", "CAD"];
 
 type Props = { amount: number };
 
 export function CurrencyConverter({ amount }: Props) {
+  const [amountValue, setAmountValue] = useState(String(amount));
   const [from, setFrom] = useState("USD");
   const [to, setTo] = useState("EUR");
   const [rate, setRate] = useState<number | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    setAmountValue(String(amount));
+  }, [amount]);
 
   useEffect(() => {
     let cancelled = false;
@@ -32,8 +37,19 @@ export function CurrencyConverter({ amount }: Props) {
       setLoading(true);
       setError("");
       try {
-        const data = await fetchExchangeRate(from, to);
-        if (!cancelled) setRate(data.rate);
+        const response = await fetch(`https://api.frankfurter.app/latest?from=${from}&to=${to}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch exchange rate");
+        }
+
+        const data = await response.json();
+        const nextRate = data?.rates?.[to];
+
+        if (typeof nextRate !== "number") {
+          throw new Error("Invalid exchange rate payload");
+        }
+
+        if (!cancelled) setRate(nextRate);
       } catch (err) {
         if (!cancelled) {
           setError("Could not fetch live rates. Please try again.");
@@ -54,7 +70,7 @@ export function CurrencyConverter({ amount }: Props) {
     setTo(from);
   };
 
-  const numeric = amount || 0;
+  const numeric = Number.parseFloat(amountValue) || 0;
   const converted = rate !== null ? numeric * rate : null;
 
   return (
@@ -72,6 +88,18 @@ export function CurrencyConverter({ amount }: Props) {
       </div>
 
       <div className="mt-6 space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="currency-amount">Amount</Label>
+          <Input
+            id="currency-amount"
+            type="number"
+            min="0"
+            step="0.01"
+            value={amountValue}
+            onChange={(event) => setAmountValue(event.target.value)}
+            className="h-11 rounded-xl"
+          />
+        </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
           <div className="space-y-2">
             <Label>From</Label>

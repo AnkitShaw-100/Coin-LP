@@ -1,5 +1,6 @@
 import { ArrowRight, Headphones, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/react";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
@@ -43,12 +44,23 @@ export function Hero() {
           </a>
         </div>
         <div className="flex items-center gap-3">
-          <Button
-            asChild
-            className="rounded-full bg-primary-glow px-5 text-primary-deep shadow-lg shadow-black/20 hover:bg-primary-glow/90"
-          >
-            <Link to="/tracker">Open tracker</Link>
-          </Button>
+          <Show when="signed-out">
+            <div className="flex items-center gap-3">
+              <SignInButton mode="modal">
+                <button className="hidden text-sm font-medium text-primary-foreground/85 transition-colors hover:text-white sm:inline">
+                  Log in
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <Button className="rounded-full bg-primary-glow px-5 text-primary-deep shadow-lg shadow-black/20 hover:bg-primary-glow/90">
+                  Sign up
+                </Button>
+              </SignUpButton>
+            </div>
+          </Show>
+          <Show when="signed-in">
+            <UserButton />
+          </Show>
         </div>
       </nav>
 
