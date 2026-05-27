@@ -12,7 +12,11 @@ type TrackerLayoutProps = {
 const navLinks = [
   { to: "/", label: "Home", match: (path: string) => path === "/" },
   { to: "/tracker", label: "Dashboard", match: (path: string) => path === "/tracker" },
-  { to: "/tracker/expenses", label: "Expenses", match: (path: string) => path.startsWith("/tracker/expenses") },
+  {
+    to: "/tracker/expenses",
+    label: "Expenses",
+    match: (path: string) => path.startsWith("/tracker/expenses"),
+  },
 ];
 
 export function TrackerLayout({

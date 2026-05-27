@@ -64,9 +64,6 @@ export function Hero() {
 
       <div className="relative mx-auto mt-10 grid w-full max-w-7xl items-center gap-10 lg:mt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
         <div className="max-w-2xl text-center lg:text-left">
-          {/* <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs uppercase tracking-widest text-primary-foreground/90 shadow-sm backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary-glow" /> New release
-          </span> */}
           <h1 className="mt-5 font-display text-4xl leading-[1.1] text-white drop-shadow-sm md:text-6xl">
             Achieve More with Intelligent Financial Tools
           </h1>
@@ -112,8 +109,6 @@ export function Hero() {
               className="pointer-events-none absolute -bottom-24 right-0 h-64 w-64 rounded-full bg-primary-glow/10 blur-3xl"
             />
 
-            {/* <div className="relative grid gap-4 p-4 md:grid-cols-[0.9fr_1.35fr] md:items-center md:p-6">
-            </div> */}
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 transition-transform duration-300 md:group-hover/hero:-translate-y-1">
               <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-primary-foreground/85">
                 <Sparkles className="h-3.5 w-3.5 text-primary-glow" /> Financial command center

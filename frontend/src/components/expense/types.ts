@@ -6,10 +6,4 @@ export type Expense = {
   date: string;
 };
 
-export const CATEGORIES = [
-  "Food",
-  "Travel",
-  "Marketing",
-  "Utilities",
-  "Other",
-] as const;
+export const CATEGORIES = ["Food", "Travel", "Marketing", "Utilities", "Other"] as const;

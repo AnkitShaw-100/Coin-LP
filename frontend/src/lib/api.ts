@@ -1,7 +1,7 @@
 import type { Expense } from "@/components/expense/types";
 
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? "http://localhost:4000").replace(
-  /\/$/, 
+  /\/$/,
   "",
 );
 
@@ -25,7 +25,9 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export async function fetchExpenses(userId: string): Promise<Expense[]> {
-  const data = await request<{ items: Expense[] }>(`/expenses?userId=${encodeURIComponent(userId)}`);
+  const data = await request<{ items: Expense[] }>(
+    `/expenses?userId=${encodeURIComponent(userId)}`,
+  );
   return data.items;
 }
 

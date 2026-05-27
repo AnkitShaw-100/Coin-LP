@@ -15,9 +15,18 @@ function cloneExpense(expense) {
     title: expense.title,
     amount: expense.amount,
     category: expense.category,
-    date: expense.date instanceof Date ? expense.date.toISOString() : new Date(expense.date).toISOString(),
-    createdAt: expense.createdAt instanceof Date ? expense.createdAt.toISOString() : expense.createdAt,
-    updatedAt: expense.updatedAt instanceof Date ? expense.updatedAt.toISOString() : expense.updatedAt,
+    date:
+      expense.date instanceof Date
+        ? expense.date.toISOString()
+        : new Date(expense.date).toISOString(),
+    createdAt:
+      expense.createdAt instanceof Date
+        ? expense.createdAt.toISOString()
+        : expense.createdAt,
+    updatedAt:
+      expense.updatedAt instanceof Date
+        ? expense.updatedAt.toISOString()
+        : expense.updatedAt,
   };
 }
 
@@ -30,7 +39,10 @@ function getMemoryBucket(userId) {
 
 async function listExpenses(userId) {
   if (useDatabase()) {
-    const expenses = await Expense.find({ userId }).sort({ date: -1, createdAt: -1 });
+    const expenses = await Expense.find({ userId }).sort({
+      date: -1,
+      createdAt: -1,
+    });
     return expenses.map((expense) => expense.toJSON());
   }
 

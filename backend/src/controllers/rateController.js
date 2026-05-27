@@ -6,19 +6,33 @@ function badRequest(message) {
 
 async function getExchangeRate(req, res, next) {
   try {
-    const from = String(req.query.from ?? "").trim().toUpperCase();
-    const to = String(req.query.to ?? "").trim().toUpperCase();
+    const from = String(req.query.from ?? "")
+      .trim()
+      .toUpperCase();
+    const to = String(req.query.to ?? "")
+      .trim()
+      .toUpperCase();
 
     if (from.length !== 3 || to.length !== 3) {
-      throw badRequest("from and to query parameters must be 3-letter currency codes");
+      throw badRequest(
+        "from and to query parameters must be 3-letter currency codes",
+      );
     }
 
     if (from === to) {
-      res.json({ from, to, rate: 1, amount: 1, date: new Date().toISOString() });
+      res.json({
+        from,
+        to,
+        rate: 1,
+        amount: 1,
+        date: new Date().toISOString(),
+      });
       return;
     }
 
-    const response = await fetch(`https://api.frankfurter.app/latest?from=${from}&to=${to}`);
+    const response = await fetch(
+      `https://api.frankfurter.app/latest?from=${from}&to=${to}`,
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch exchange rate");
     }

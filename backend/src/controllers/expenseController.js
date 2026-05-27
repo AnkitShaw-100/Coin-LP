@@ -25,7 +25,8 @@ function validateExpensePayload(payload) {
 
   if (!userId) throw badRequest("userId is required");
   if (!title) throw badRequest("title is required");
-  if (!Number.isFinite(amount) || amount <= 0) throw badRequest("amount must be greater than 0");
+  if (!Number.isFinite(amount) || amount <= 0)
+    throw badRequest("amount must be greater than 0");
   if (!CATEGORIES.includes(category)) {
     throw badRequest(`category must be one of: ${CATEGORIES.join(", ")}`);
   }

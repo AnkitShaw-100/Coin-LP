@@ -42,9 +42,7 @@ export function SummaryPanel({ expenses }: Props) {
             return (
               <div key={category} className="rounded-xl bg-primary-foreground/10 p-3">
                 <p className="text-sm font-medium text-white">{category}</p>
-                <p className="mt-1 text-base text-primary-foreground/80">
-                  ${value.toFixed(2)}
-                </p>
+                <p className="mt-1 text-base text-primary-foreground/80">${value.toFixed(2)}</p>
               </div>
             );
           })}

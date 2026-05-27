@@ -64,10 +64,7 @@ export function TotalCurrencyPreview({ totalUsd }: Props) {
 
   return (
     <section className="overflow-hidden rounded-3xl border border-primary-deep/15 shadow-[var(--shadow-elegant)]">
-      <header
-        className="relative px-6 py-5 md:px-8"
-        style={{ background: "var(--gradient-hero)" }}
-      >
+      <header className="relative px-6 py-5 md:px-8" style={{ background: "var(--gradient-hero)" }}>
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.07]"
